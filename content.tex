@@ -64,30 +64,7 @@
 \section{Skill Vehicle Routing Problem}
 \frame{\insertsection}
 
-\begin{frame}[t,allowframebreaks]{Introduction}
-    \begin{figure}
-        \centering
-        \includegraphics[width=6cm]{VRPSS01.pdf}
-        \caption{Caption}
-        \label{fig:my_label}
-    \end{figure}
-    \framebreak
-    \begin{figure}
-        \centering
-        \includegraphics[width=6cm]{VRPSS02.pdf}
-        \caption{Caption}
-        \label{fig:my_label}
-    \end{figure}
-    \framebreak
-    \begin{figure}
-        \centering
-        \includegraphics[width=6cm]{VRPSS03.pdf}
-        \caption{Caption}
-        \label{fig:my_label}
-    \end{figure}
-\end{frame}
-
-\begin{frame}[t, allowframebreaks]{Introduction}
+\begin{frame}[t]{Introduction (1)}
     \begin{minipage}[t]{0.48\textwidth}
         \begin{itemize}
             \item<1-> Set of \textbf{customers} $S$
@@ -104,10 +81,12 @@
             \centering
             \includegraphics[width=5cm]{VRPSS01.pdf}
             \caption{SVRP}
-            \label{fig:my_label}
+            \label{fig:VRPSS01}
         \end{figure}            
     \end{minipage}
-    \framebreak
+\end{frame}
+
+\begin{frame}[t]{Introduction (1)}
     \begin{minipage}[t]{0.48\textwidth}
         \begin{itemize}
             \item Set of \textbf{customers} $S$
@@ -124,9 +103,118 @@
             \centering
             \includegraphics[width=5cm]{VRPSS02.pdf}
             \caption{SVRP}
-            \label{fig:my_label}
+            \label{fig:VRPSS02}
         \end{figure}            
     \end{minipage}    
+\end{frame}
+
+\begin{frame}[t]{Introduction (1)}
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{itemize}
+            \item Set of \textbf{customers} $S$
+            \item Skill requirement $q_j$,  $\forall j \in S$
+            \item Fleet of vehicles (\textbf{drivers}) $D$
+            \item Set of skills $K_i$ $\forall i \in D$
+            \item Metric graph $G = (S, \, E)$
+            \item Special node \emph{depot}, $r \in S$
+            \item Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=5cm]{VRPSS03.pdf}
+            \caption{SVRP}
+            \label{fig:VRPSS02}
+        \end{figure}            
+    \end{minipage}    
+\end{frame}
+
+\begin{frame}{Introduction (2)}
+\begin{itemize}
+    \item<1-> Goal: to find \textbf{tours} (routes that start and end at $r$) and assign them to drivers such that:
+    \begin{itemize}
+        \item<2-> The union of all the tours cover $S$
+        \item<3-> The drivers can served the customers assigned to them
+        \item<4-> The total travel distance is minimized
+    \end{itemize}
+    \item<5-> SVRP has immediate applications in logistics and transportation
+        \begin{itemize}
+            \item<6-> Transport costs account for 10\% of the total cost of a product
+            \item<7-> Manual optimization of the transport cost becomes infeasible as the scale grows
+        \end{itemize}
+    \item<7-> We seek to solve SVRP \textbf{computationally}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{Solution Methods}
+    \begin{itemize}
+        \item<1-> Metaheuristics:
+            \begin{itemize}
+                \item<2-> Tabu search
+                \item<3-> Simulated annealing
+                \item<4-> \ldots
+            \end{itemize}
+        \item<5-> Linear Programming:
+            \begin{itemize}
+                \item<6-> Goal: obtain minimum-cost solutions or or lower and upper bounds
+                \item<7-> an LP-relaxation used in a branch-and-bound algorithm
+                \item<8-> Integrality gap plays an important role
+                \item<9-> Question: a formulation with small gap?
+                \item<10-> Answer: \textbf{Configuration LP}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Configuration LP (1)}
+    \begin{itemize}
+        \item<1-> First used in the context of Bin Packing problems
+        \item<2-> Define $\cT(i)$: set of tours that $i$ can serve        
+        \item<3-> For every driver $i \in D$ and every tour $T \in \cT(i)$:
+        \[
+            z_{i, T} =
+                \begin{cases}
+                    1 & \text{if driver $i$ visits the vertices in the tour $T$} \\
+                    0 & \text{otherwise}
+                \end{cases}
+        \]
+    \end{itemize}
+\end{frame}
+\begin{frame}[t]{Configuration LP (2)}
+    \begin{itemize}
+        \item<1->[ ] \begin{align}
+            \text {min } \label{cg_obj}	 \sum_{ i, 	T \in \cT(i) } z_{i, T} & \cdot C(T) &    &  \\
+            \text{subject to }             & & \nonumber  \\
+            \label{const:cg1}       \sum_{ T \in \cT(i) } z_{ i, T } & = 1  &   \forall i \in D \\
+            \label{const:cg2}       \sum_{ i, T \in \cT(i): T \ni j } z_{ i, T } & \geq 1   &   \forall j \in S \\
+            \label{consT:cg3}       z_{ i, T } & \in \{0,\, 1\}    & \forall \, i \in D, \, \forall \, T \in \cT(i) 
+        \end{align}        
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Configuration LP (3)}
+    \begin{itemize}
+        \item<1-> Advantage:
+            \begin{itemize}
+                \item<2-> Small integrality gap
+            \end{itemize}
+        \item<3-> Disadvantage: 
+            \begin{itemize}
+                \item<4-> Exponential number of variables
+            \end{itemize}
+        \item<5-> Common technique for dealing with LP formulations with a large number of constraints: \textbf{Delayed Column Generation}
+            \begin{itemize}
+                \item<6-> Do not introduce all the variables at once
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Our Contribution}
+
+\end{frame}
+
+\begin{frame}[t]{Future Projects}
 \end{frame}
 
 %__________________________________________________________________________________
