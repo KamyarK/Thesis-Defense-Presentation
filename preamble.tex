@@ -78,7 +78,7 @@
 \renewcommand{\Xi}{\xi}
 
 \newtheorem{thm}{Theorem}  %[chapter]
-\newtheorem{fact}[thm]{Fact}
+%\newtheorem{fact}[thm]{Fact}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{obs}[thm]{Observation}
 \newtheorem{clm}[thm]{Claim}
@@ -91,13 +91,13 @@
 \newtheorem{exm}[thm]{Example}
 %\theoremstyle{defn}
 %\newtheorem{pbl}{Open Problem}
-\newtheorem{definition}{Definition}
+%\newtheorem{definition}{Definition}
 \newtheorem{remark}{Remark}
-\newtheorem{lemma}{Lemma}
-\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{theorem}{Theorem}
 \newtheorem{observation}{Observation}
 \newtheorem{claim}{Claim}
-\newtheorem{problem}{Problem}
+%\newtheorem{problem}{Problem}
 
 \numberwithin{thm}{section}
 %\numberwithin{defi}{section}
@@ -130,15 +130,24 @@
 \newcommand{\facref}[1]{Fact~\ref{fac:#1}}
 \newcommand{\remref}[1]{Remark~\ref{rem:#1}}
 \newcommand{\charef}[1]{Chapter~\ref{cha:#1}}
-\newcommand{\eq}[1]{equation~\eqref{eq:#1}}
-\newcommand{\eqs}[2]{equations~\eqref{eq:#1} and~\eqref{eq:#2}}
-\newcommand{\eqss}[3]{equations~\eqref{eq:#1},~\eqref{eq:#2}, and~\eqref{eq:#3}}
-\newcommand{\Eqs}[2]{equations~\eqref{eq:#1} and~\eqref{eq:#2}}
+\newcommand{\eq}[1]{Equation~\eqref{eq:#1}}
+\newcommand{\eqs}[2]{Equations~\eqref{eq:#1} and~\eqref{eq:#2}}
+\newcommand{\eqss}[3]{Equations~\eqref{eq:#1},~\eqref{eq:#2}, and~\eqref{eq:#3}}
+\newcommand{\Eqs}[2]{Equations~\eqref{eq:#1} -~\eqref{eq:#2}}
 \newcommand{\propref}[1]{P\ref{prop:#1}}
-\newcommand{\ineq}[1]{inequality~\eqref{eq:#1}}
+\newcommand{\ineq}[1]{Inequality~\eqref{eq:#1}}
+\newcommand{\ineqs}[2]{Inequalities~\eqref{eq:#1} and \eqref{eq:#2}}
 \newcommand{\exmref}[1]{Example~\ref{exm:#1}}
+\newcommand{\constref}[1]{Constraint~\ref{const:#1}}
+\newcommand{\constrefs}[2]{Constraints~\ref{const:#1} and~\ref{const:#2}}
+\newcommand{\constrefss}[2]{Constraints~\ref{const:#1}--\ref{const:#2}}
 \newcommand{\factref}[1]{Fact~\ref{fact:#1}}
 \newcommand{\condref}[1]{Condition~\ref{cond:#1}}
+\newcommand{\chapref}[1]{Chapter~\ref{chap:#1}}
+\newcommand{\chaprefs[2]}{Chapters~\ref{chap:#1} and~\ref{chap:#2}}
+\newcommand{\algref}[1]{Algorithm~\ref{alg:#1}}
+\newcommand{\tblref}[1]{Table~\ref{tbl:#1}}
+\newcommand{\tblrefs}[2]{Tables~\ref{tbl:#1} and ~\ref{tbl:#2}}
 
 \renewcommand{\Pr}[1]{\ensuremath{\operatorname{\mathbf{Pr}}\left[#1\right]}}
 \newcommand{\Prbig}[1]{\ensuremath{\operatorname{\mathbf{Pr}}\big[#1\big]}}
