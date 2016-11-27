@@ -1,0 +1,346 @@
+% My stuff
+
+\usepackage[]{algorithm2e}
+%\usepackage{algorithmic}
+%\usepackage{algpseudocode}
+\usepackage[active]{srcltx}
+%\usepackage[scale=0.8]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bm}
+%\usepackage{bbding}
+%\theoremstyle{plain}
+
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+%\usepackage{a4wide}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{times}
+%\usepackage[table]{xcolor}
+%\usepackage{xspace}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{decorations.markings}
+\usepackage{chngpage}
+%\usepackage[latin1]{inputenc}
+\usepackage[american]{babel}
+\usepackage{graphicx}
+%\usepackage{epsfig}
+\usepackage{color}
+\usepackage{multirow}
+\hyphenation{mono-ton-icity}
+\usepackage[margin=0in,font=small,labelfont=bf,indention=0cm]{caption}  % for hanging captions
+\usepackage{latexsym}
+%\usepackage{pstricks}
+%\usepackage{fancyhdr}
+\usepackage{setspace}   % just for \NOTE
+\usepackage{framed}
+
+%\newcommand{\NOTE}[2]{\marginpar{\setstretch{0.43}\textcolor{blue}{\bf\tiny #1: }\textcolor{red}{\bf\tiny #2}}}
+\newcommand{\NOTE}[2]{$^{\textcolor{red}\clubsuit}$\marginpar{\setstretch{0.43}\textcolor{blue}{\bf\tiny #1: }\textcolor{red}{\bf\tiny #2}}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\newcommand{\NOTEB}[2]{$^{\textcolor{blue}\clubsuit}$\marginpar{\setstretch{0.43}\textcolor{blue}{\bf\tiny #1: }\textcolor{blue}{\bf\tiny #2}}}
+
+% cancelling \NOTE, \NOTEB, and \red
+%\renewcommand{\NOTE}[2]{}
+%\renewcommand{\red}[1]{#1}
+\renewcommand{\NOTEB}[2]{}
+
+\newcommand{\Bin}{\mathsf{Bin}}
+\newcommand{\Exp}{\mathsf{Exp}}
+\newcommand{\Geo}{\mathsf{Geo}}
+\newcommand{\Uni}{\mathsf{Uni}}
+\newcommand{\Ber}{\mathsf{Ber}}
+\newcommand{\Poi}{\mathsf{Poi}}
+\renewcommand{\phi}{r}
+
+\newcommand{\ARR}{\mathsf{ARR}}
+\newcommand{\im}{\mathsf{i}}
+\usepackage[numbers,sort&compress,longnamesfirst,sectionbib]{natbib}
+\bibliographystyle{abbrv}
+
+\floatstyle{ruled}
+\newfloat{algorithm}{htbp}{loa}
+\floatname{algorithm}{Algorithm}
+
+
+%\renewcommand{\labelitemi}{\textbullet}
+%\renewcommand{\labelenumi}{(\arabic{enumi})}  % or: {(\roman{enumi})}
+
+\renewcommand{\Xi}{\xi}
+
+\newtheorem{thm}{Theorem}  %[chapter]
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{clm}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fac}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ass}[thm]{Assumption}
+\newtheorem{pro}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exm}[thm]{Example}
+%\theoremstyle{defn}
+%\newtheorem{pbl}{Open Problem}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{observation}{Observation}
+\newtheorem{claim}{Claim}
+\newtheorem{problem}{Problem}
+
+\numberwithin{thm}{section}
+%\numberwithin{defi}{section}
+\numberwithin{equation}{section}
+
+\newcommand{\tsum}{\textstyle\sum}
+
+\newcommand{\shortthmref}[1]{Thm.~\ref{thm:#1}}
+\newcommand{\thmref}[1]{Theorem~\ref{thm:#1}}
+\newcommand{\thmrefs}[2]{Theorems~\ref{thm:#1} and~\ref{thm:#2}}
+\newcommand{\thmrefss}[3]{Theorems~\ref{thm:#1},~\ref{thm:#2} and~\ref{thm:#3}}
+\newcommand{\proref}[1]{Proposition~\ref{pro:#1}}
+\newcommand{\prorefs}[2]{Propositions~\ref{pro:#1} and~\ref{pro:#2}}
+\newcommand{\lemref}[1]{Lemma~\ref{lem:#1}}
+\newcommand{\lemrefs}[2]{Lemmas~\ref{lem:#1} and~\ref{lem:#2}}
+\newcommand{\lemrefss}[3]{Lemmas~\ref{lem:#1},~\ref{lem:#2}, and~\ref{lem:#3}}
+\newcommand{\corref}[1]{Corollary~\ref{cor:#1}}
+\newcommand{\obsref}[1]{Observation~\ref{obs:#1}}
+\newcommand{\clmref}[1]{Claim~\ref{clm:#1}}
+\newcommand{\defref}[1]{Definition~\ref{def:#1}}
+\newcommand{\defrefs}[2]{Definitions~\ref{def:#1} and~\ref{def:#2}}
+\newcommand{\assref}[1]{Assumption~\eqref{ass:#1}}
+\newcommand{\conref}[1]{Conjecture~\ref{con:#1}}
+\newcommand{\figref}[1]{Figure~\ref{fig:#1}}
+\newcommand{\figrefs}[2]{Figures~\ref{fig:#1} and~\ref{fig:#2}}
+\newcommand{\tabref}[1]{Table~\ref{tab:#1}}
+\newcommand{\secref}[1]{Section~\ref{sec:#1}}
+\newcommand{\secrefs}[2]{Sections~\ref{sec:#1} and~\ref{sec:#2}}
+\newcommand{\appref}[1]{Appendix~\ref{app:#1}}
+\newcommand{\facref}[1]{Fact~\ref{fac:#1}}
+\newcommand{\remref}[1]{Remark~\ref{rem:#1}}
+\newcommand{\charef}[1]{Chapter~\ref{cha:#1}}
+\newcommand{\eq}[1]{equation~\eqref{eq:#1}}
+\newcommand{\eqs}[2]{equations~\eqref{eq:#1} and~\eqref{eq:#2}}
+\newcommand{\eqss}[3]{equations~\eqref{eq:#1},~\eqref{eq:#2}, and~\eqref{eq:#3}}
+\newcommand{\Eqs}[2]{equations~\eqref{eq:#1} and~\eqref{eq:#2}}
+\newcommand{\propref}[1]{P\ref{prop:#1}}
+\newcommand{\ineq}[1]{inequality~\eqref{eq:#1}}
+\newcommand{\exmref}[1]{Example~\ref{exm:#1}}
+\newcommand{\factref}[1]{Fact~\ref{fact:#1}}
+\newcommand{\condref}[1]{Condition~\ref{cond:#1}}
+
+\renewcommand{\Pr}[1]{\ensuremath{\operatorname{\mathbf{Pr}}\left[#1\right]}}
+\newcommand{\Prbig}[1]{\ensuremath{\operatorname{\mathbf{Pr}}\big[#1\big]}}
+\newcommand{\PrBig}[1]{\ensuremath{\operatorname{\mathbf{Pr}}\Big[#1\Big]}}
+\newcommand{\Pro}[1]{\ensuremath{\operatorname{\mathbf{Pr}}\left[#1\right]}}
+\newcommand{\Ex}[1]{\ensuremath{\operatorname{\mathbf{E}}\left[#1\right]}}
+\newcommand{\Exbig}[1]{\ensuremath{\operatorname{\mathbf{E}}\big[#1\big]}}
+\newcommand{\ExBig}[1]{\ensuremath{\operatorname{\mathbf{E}}\Big[#1\Big]}}
+\newcommand{\Exbigg}[1]{\ensuremath{\operatorname{\mathbf{E}}\bigg[#1\bigg]}}
+\newcommand{\ExBigg}[1]{\ensuremath{\operatorname{\mathbf{E}}\Bigg[#1\Bigg]}}
+\newcommand{\floor}[1]{\ensuremath{\left \lfloor #1 \right \rfloor}}
+\newcommand{\ceil}[1]{\ensuremath{\left \lceil #1 \right \rceil}}
+
+\newcommand{\Znd}{{\mathbb{Z}^{r}_{\neq0}}}
+\newcommand{\Nnd}{{\mathbb{N}^{r}_{\neq0}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\avgXi}{\ensuremath{\overline{\Xi}}}
+%\newcommand{\avgX}{\ensuremath{\overline{X}}}
+\newcommand{\one}{\textbf{1}}
+
+\newcommand{\bA}{\ensuremath{\mathbb{A}}}
+\newcommand{\bB}{\ensuremath{\mathbb{B}}}
+\newcommand{\bC}{\ensuremath{\mathbb{C}}}
+\newcommand{\bD}{\ensuremath{\mathbb{D}}}
+\newcommand{\bE}{\ensuremath{\mathbb{E}}}
+\newcommand{\bF}{\ensuremath{\mathbb{F}}}
+\newcommand{\bG}{\ensuremath{\mathbb{G}}}
+\newcommand{\bH}{\ensuremath{\mathbb{H}}}
+\newcommand{\bI}{\ensuremath{\mathbb{I}}}
+\newcommand{\bJ}{\ensuremath{\mathbb{J}}}
+\newcommand{\bK}{\ensuremath{\mathbb{K}}}
+\newcommand{\bL}{\ensuremath{\mathbb{L}}}
+\newcommand{\bM}{\ensuremath{\mathbb{M}}}
+\newcommand{\bN}{\ensuremath{\mathbb{N}}}
+\newcommand{\bO}{\ensuremath{\mathbb{O}}}
+\newcommand{\bP}{\ensuremath{\mathbb{P}}}
+\newcommand{\bQ}{\ensuremath{\mathbb{Q}}}
+\newcommand{\bR}{\ensuremath{\mathbb{R}}}
+\newcommand{\bS}{\ensuremath{\mathbb{S}}}
+\newcommand{\bT}{\ensuremath{\mathbb{T}}}
+\newcommand{\bU}{\ensuremath{\mathbb{U}}}
+\newcommand{\bV}{\ensuremath{\mathbb{V}}}
+\newcommand{\bW}{\ensuremath{\mathbb{W}}}
+\newcommand{\bX}{\ensuremath{\mathbb{X}}}
+\newcommand{\bY}{\ensuremath{\mathbb{Y}}}
+\newcommand{\bZ}{\ensuremath{\mathbb{Z}}}
+
+\newcommand{\cA}{\ensuremath{\mathcal{A}}}
+\newcommand{\cB}{\ensuremath{\mathcal{B}}}
+\newcommand{\cC}{\ensuremath{\mathcal{C}}}
+\newcommand{\cD}{\ensuremath{\mathcal{D}}}
+\newcommand{\cE}{\ensuremath{\mathcal{E}}}
+\newcommand{\cF}{\ensuremath{\mathcal{F}}}
+\newcommand{\cG}{\ensuremath{\mathcal{G}}}
+\newcommand{\cH}{\ensuremath{\mathcal{H}}}
+\newcommand{\cI}{\ensuremath{\mathcal{I}}}
+\newcommand{\cJ}{\ensuremath{\mathcal{J}}}
+\newcommand{\cK}{\ensuremath{\mathcal{K}}}
+\newcommand{\cL}{\ensuremath{\mathcal{L}}}
+\newcommand{\cM}{\ensuremath{\mathcal{M}}}
+\newcommand{\cN}{\ensuremath{\mathcal{N}}}
+\newcommand{\cO}{\ensuremath{\mathcal{O}}}
+\newcommand{\cP}{\ensuremath{\mathcal{P}}}
+\newcommand{\cQ}{\ensuremath{\mathcal{Q}}}
+\newcommand{\cR}{\ensuremath{\mathcal{R}}}
+\newcommand{\cS}{\ensuremath{\mathcal{S}}}
+\newcommand{\cT}{\ensuremath{\mathcal{T}}}
+\newcommand{\cU}{\ensuremath{\mathcal{U}}}
+\newcommand{\cV}{\ensuremath{\mathcal{V}}}
+\newcommand{\cW}{\ensuremath{\mathcal{W}}}
+\newcommand{\cX}{\ensuremath{\mathcal{X}}}
+\newcommand{\cY}{\ensuremath{\mathcal{Y}}}
+\newcommand{\cZ}{\ensuremath{\mathcal{Z}}}
+
+\newcommand{\bcA}{\ensuremath{\boldsymbol{\mathcal{A}}}}
+\newcommand{\bcB}{\ensuremath{\boldsymbol{\mathcal{B}}}}
+\newcommand{\bcC}{\ensuremath{\boldsymbol{\mathcal{C}}}}
+\newcommand{\bcD}{\ensuremath{\boldsymbol{\mathcal{D}}}}
+\newcommand{\bcE}{\ensuremath{\boldsymbol{\mathcal{E}}}}
+\newcommand{\bcF}{\ensuremath{\boldsymbol{\mathcal{F}}}}
+\newcommand{\bcG}{\ensuremath{\boldsymbol{\mathcal{G}}}}
+\newcommand{\bcH}{\ensuremath{\boldsymbol{\mathcal{H}}}}
+\newcommand{\bcI}{\ensuremath{\boldsymbol{\mathcal{I}}}}
+\newcommand{\bcJ}{\ensuremath{\boldsymbol{\mathcal{J}}}}
+\newcommand{\bcK}{\ensuremath{\boldsymbol{\mathcal{K}}}}
+\newcommand{\bcL}{\ensuremath{\boldsymbol{\mathcal{L}}}}
+\newcommand{\bcM}{\ensuremath{\boldsymbol{\mathcal{M}}}}
+\newcommand{\bcN}{\ensuremath{\boldsymbol{\mathcal{N}}}}
+\newcommand{\bcO}{\ensuremath{\boldsymbol{\mathcal{O}}}}
+\newcommand{\bcP}{\ensuremath{\boldsymbol{\mathcal{P}}}}
+\newcommand{\bcQ}{\ensuremath{\boldsymbol{\mathcal{Q}}}}
+\newcommand{\bcR}{\ensuremath{\boldsymbol{\mathcal{R}}}}
+\newcommand{\bcS}{\ensuremath{\boldsymbol{\mathcal{S}}}}
+\newcommand{\bcT}{\ensuremath{\boldsymbol{\mathcal{T}}}}
+\newcommand{\bcU}{\ensuremath{\boldsymbol{\mathcal{U}}}}
+\newcommand{\bcV}{\ensuremath{\boldsymbol{\mathcal{V}}}}
+\newcommand{\bcW}{\ensuremath{\boldsymbol{\mathcal{W}}}}
+\newcommand{\bcX}{\ensuremath{\boldsymbol{\mathcal{X}}}}
+\newcommand{\bcY}{\ensuremath{\boldsymbol{\mathcal{Y}}}}
+\newcommand{\bcZ}{\ensuremath{\boldsymbol{\mathcal{Z}}}}
+
+\newcommand{\tZ}{\widetilde{Z}}
+\newcommand{\tV}{\widetilde{V}}
+
+\newcommand{\Alpha}{\boldsymbol\alpha}
+\newcommand{\Nu}{\boldsymbol\nu}
+
+\newcommand{\NPC}{\ensuremath{\mathcal{NP}}-complete}
+\newcommand{\NPH}{\ensuremath{\mathcal{NP}}-hard}
+
+%\newcommand{\Sl}{\ensuremath{S_{\ell}}}
+%\newcommand{\Slup}{\ensuremath{S_{\ell}^{\margin=0pt,lceil\cdot\rceil}}}
+%\newcommand{\Sldown}{\ensuremath{S_{\ell}^{\lfloor\cdot\rfloor}}}
+%\newcommand{\Ml}{\ensuremath{M^{(i)}}}
+%\newcommand{\MlOdd}{\ensuremath{M^{(i)}_{\Odd}}}
+%\newcommand{\MlEven}{\ensuremath{M^{(i)}_{\Even}}}
+%\newcommand{\Mt}{\ensuremath{M^{(t)}}}
+%\newcommand{\Mi}{\ensuremath{M^{(i)}}}
+
+% Handy definitions
+\newcommand{\bigO}[1]{\ensuremath{\mathcal{O} \left( #1 \right)}}
+\newcommand{\bigOmega}[1]{\ensuremath{\Omega \left( #1 \right)}}
+\newcommand{\bigTheta}[1]{\ensuremath{\Theta \left( #1 \right)}}
+\newcommand{\smallO}[1]{\ensuremath{o \left( #1 \right)}}
+\newcommand{\smallOmega}[1]{\ensuremath{\omega \left( #1 \right)}}
+\newcommand{\abs}[1]{\left| \, #1 \, \right|}
+\newcommand{\comb}[2]{\ensuremath{\left( \! \! \begin{array}{c} #1 \\ #2 \end{array} \! \! \right)}}
+
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\Oh}{\mathcal{O}}
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\newcommand{\eps}{\ensuremath{\varepsilon}}
+\newcommand{\ee}{\ensuremath{\varepsilon}}
+\newcommand{\lb}{\log_2}
+
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\diam}{\operatorname{diam}}
+\providecommand{\deg}{\operatorname{deg}}
+\newcommand{\out}{\operatorname{out}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\polylog}{\operatorname{polylog}}
+\newcommand{\polyloglog}{\operatorname{polyloglog}}
+\newcommand{\loaddiff}{\mathit{load}\text{-}\mathit{difference}}
+
+
+\let\oldsqrt\sqrt
+\def\hksqrt{\mathpalette\DHLhksqrt}
+\def\DHLhksqrt#1#2{\setbox0=\hbox{$#1\oldsqrt{#2\,}$}\dimen0=\ht0
+   \advance\dimen0-0.2\ht0
+   \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+   {\box0\lower0.4pt\box2}}
+\renewcommand\sqrt\hksqrt
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\epsilon}{\varepsilon}
+
+% --------------------------------------------------------------------------------
+% define \againlem, \againthm, \againpro
+\newcommand{\mylem}[2]{\begin{lem}\label{lem:#1}#2\end{lem}}
+\newcommand{\againlem}[2]{\noindent\textbf{Restatement of \lemref{#1}}
+    (from page \pageref{lem:#1})\textbf{.}\emph{#2}\par}
+
+\newcommand{\mythm}[2]{\begin{thm}\label{thm:#1}#2\end{thm}}
+\newcommand{\againthm}[2]{\noindent\textbf{Restatement of \thmref{#1}}
+    (from page \pageref{thm:#1})\textbf{.}\emph{#2}\par}
+
+\newcommand{\mycor}[2]{\begin{cor}\label{cor:#1}#2\end{cor}}
+\newcommand{\againcor}[2]{\noindent\textbf{Restatement of \corref{#1}}
+    (from page \pageref{cor:#1})\textbf{.}\emph{#2}\par}
+
+\newcommand{\mypro}[2]{\begin{pro}\label{pro:#1}#2\end{pro}}
+\newcommand{\againpro}[2]{\noindent\textbf{Restatement of \proref{#1}}
+    (from page \pageref{pro:#1})\textbf{.}\emph{#2}\par}
+
+\newcommand{\tP}{\ensuremath{\widetilde{\mathbf{P}}}}
+\newcommand{\barP}{\ensuremath{\overline{\mathbf{P}}}}
+\newcommand{\nE}{\ensuremath{E_{\neq 0}}}
+
+
+% Changing the footnotes from numbers to symbols
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+% --------------------------------------------------------------------------------
+% define \timestamp
+\newcount\minute \newcount\hour \newcount\hourMins
+\def\now{\minute=\time \hour=\time \divide \hour by 60 \hourMins=\hour \multiply\hourMins by 60
+  \advance\minute by -\hourMins \zeroPadTwo{\the\hour}:\zeroPadTwo{\the\minute}}
+\def\timestamp{\today\ \now}
+\def\today{\the\year-\zeroPadTwo{\the\month}-\zeroPadTwo{\the\day}}
+\def\zeroPadTwo#1{\ifnum #1<10 0\fi #1}
+
+% ---------------------------------------------------------------------
+
+
+%\sloppy
+
+\allowdisplaybreaks[1]   % allow linebreaks even in muli-line equations
+
+%\setstretch{0.95}
+\setlength{\marginparwidth}{1.1cm}
