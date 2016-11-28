@@ -71,8 +71,8 @@
             \item<2-> Skill requirement $q_j$,  $\forall j \in S$
             \item<3-> Fleet of vehicles (\textbf{drivers}) $D$
             \item<4-> Set of skills $K_i$ $\forall i \in D$
-            \item<5-> Metric graph $G = (S, \, E)$
-            \item<6-> Special node \emph{depot}, $r \in S$
+            \item<5-> Special node \emph{depot}, $r \in S$
+            \item<6-> Metric graph $G = (S, \, E)$
             \item<7-> Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
         \end{itemize}
     \end{minipage}
@@ -170,7 +170,7 @@
 \begin{frame}[t]{Configuration LP (1)}
     \begin{itemize}
         \item<1-> First used in the context of Bin Packing problems
-        \item<2-> Define $\cT(i)$: set of tours that $i$ can serve        
+        \item<2-> For every driver $i \in D$, $\cT(i)$ is the set of tours $i$ can serve        
         \item<3-> For every driver $i \in D$ and every tour $T \in \cT(i)$:
         \[
             z_{i, T} =
@@ -188,7 +188,7 @@
             \text {min } \label{cg_obj}	 \sum_{ i, 	T \in \cT(i) } z_{i, T} & \cdot C(T) &    &  \\
             \text{subject to }             & & \nonumber  \\
             \label{const:cg1}       \sum_{ T \in \cT(i) } z_{ i, T } & = 1  &   \forall i \in D \\
-            \label{const:cg2}       \sum_{ i, T \in \cT(i): T \ni j } & z_{ i, T } & \geq 1   &   \forall j \in S \\
+            \label{const:cg2}       \sum_{ i, T \in \cT(i): T \ni j } z_{ i, T } & \geq 1   &   \forall j \in S \\
             \label{consT:cg3}       z_{ i, T } & \in \{0,\, 1\}    & \forall \, i \in D, \, \forall \, T \in \cT(i) 
         \end{align}        
         \hyperlink{our_method_bp}{\beamergotobutton{Branch-and-Price}}
@@ -222,10 +222,10 @@
         \item<2-> Use column generation in a branch-and-bound framework
         \item<3-> Detect the reduced-cost columns (\textbf{Pricing} subproblem)
             \begin{itemize}
-                \item<4-> Exact solutions: \alert{Prize-Collecting TSP}
-                \item<5-> Heuristic: a \alert{local search} algorithm 
+                \item<4-> Heuristic: a \alert{local search} algorithm 
+                \item<5-> Exact solutions: \alert{Prize-Collecting TSP}
             \end{itemize}
-        \item<6-> Use both the exact and heuristic solution to improve upper and lower bounds \hyperlink{CLP2}{\beamergotobutton{Config. LP}}        
+        \item<6-> Use both the heuristic and exact solutions to improve upper and lower bounds \hyperlink{CLP2}{\beamergotobutton{Config. LP}}        
         \item<7-> Future projects:
             \begin{itemize}
                 \item<8-> Benchmarking heuristics and metaheuristics
@@ -245,7 +245,7 @@
 \item<2-> Metric graph $G = (S, \, E)$ (on a Euclidean plane) 
 \item<3-> A special node depot, $r \in S$
 \item<4-> A cost function $c:E \rightarrow \bR^+$ for every pair of nodes
-\item<5-> A prize function $\beta:S \rightarrow \bR^+$ for every node
+\item<5-> A \textbf{prize} function $\beta:S \rightarrow \bR^+$ for every node
 \item<6-> Objective: Find a tour covering the depot and a \emph{subset} of nodes, maximizing the sum of prizes minus the sum of costs
 
 \end{itemize}
@@ -346,7 +346,7 @@
         \begin{itemize}
             \item<4-> Some formulations with exponential number of constraints exhibit low integrality gaps for TSP-like problems
             \item<5-> Normally a mix of cutting plane method and branch-and-bound is used: \textbf{Branch-and-Cut}
-            \item<6-> Gendreau et al., Fischetti et al., and Laporte et al. provide Branch-and-Cut algorithms for variants of the problem
+            \item<6-> Gendreau et al., Fischetti et al., and B\'{e}rub\'{e} et al. provide Branch-and-Cut algorithms for variants of the problem
         \end{itemize}
 \end{itemize}
 \end{frame}
@@ -387,13 +387,15 @@
 
 \begin{frame}[t]{ILP Formulation (3)}
     \begin{itemize}
-        \item<1-> \constref{pctsp2} are referred to as the \textbf{Generalized Subtour Elimination Constraints} (GSECs) 
-        \item<2-> Problem: there are exponentially many GSECs
-        \item<3-> Solution: do not introduce them all at once (cutting plane method)
+        \item<1->[ ]
+        \[  \sum_{e \in E(V) } x_e \leq \sum_{i \in V \backslash\{ k \}} y_{i} \qquad \forall k \in V, V\subseteq S' \]
+        \item<2-> \constref{pctsp2} are referred to as the \textbf{Generalized Subtour Elimination Constraints} (GSECs) 
+        \item<3-> Problem: there are exponentially many GSECs
+        \item<4-> Solution: do not introduce them all at once (cutting plane method)
             \begin{itemize}
-                \item<4-> Start with an initial set of constraints and solve the LP relaxation
-                \item<5-> Identify violated constrains (if any) and add them to the model (\textbf{Separation} problem)
-                \item<6-> Iterate until completion
+                \item<5-> Start with an initial set of constraints and solve the LP relaxation
+                \item<6-> Identify violated constrains (if any) and add them to the model (\textbf{Separation} problem)
+                \item<7-> Iterate until completion
             \end{itemize}    
     \end{itemize}
 \end{frame}
@@ -424,16 +426,16 @@
                     \hline \\
                     \textbf{Instance}	&	\textbf{Obj.}	&	\textbf{ILP Time}	&	\textbf{Optimal}	&	\textbf{Time}	&	\textbf{\% Gap}	& \\
                     \hline \\
-                    att48		&	1358.75		&	1		&	\checkmark	&	<1		&			&	\\
-                    st70		&	-6432.24	&	3		&	\checkmark	&	4		&			&	\\
-                    eilD76		&	-6774.3		&	2		&	\checkmark	&	8		&			&	\\
-                    gr96		&	-9527.97	&	6		&	\checkmark	&	46		&			&	\\
-                    ch150		&	-8827.78	&	14226	&	\checkmark	&	1166	&			&	\\
-                    kroB200		&	-3151.54	&	t.l.	&	\checkmark	&	270		&			&	\\
-                    a280		&	-24878.5	&	t.l.	&	\checkmark	&	3550	&			&	\\
+                    att48		&	-1358.75		&	1		&	\checkmark	&	<1		&			&	\\
+                    st70		&	6432.24	&	3		&	\checkmark	&	4		&			&	\\
+                    eilD76		&	6774.3		&	2		&	\checkmark	&	8		&			&	\\
+                    gr96		&	9527.97	&	6		&	\checkmark	&	46		&			&	\\
+                    ch150		&	8827.78	&	14226	&	\checkmark	&	1166	&			&	\\
+                    kroB200		&	3151.54	&	t.l.	&	\checkmark	&	270		&			&	\\
+                    a280		&	24878.5	&	t.l.	&	\checkmark	&	3550	&			&	\\
                     fl417		&				&	t.l.	&	-			&	t.l.	&	\%0.05	&	\\
-                    gr431		&	-41742.6	&	5180	&	\checkmark	&	2651	&			&	\\
-                    pr439		&	-384.1		&	t.l.	&	\checkmark	&	1502	&			&	\\
+                    gr431		&	41742.6	&	5180	&	\checkmark	&	2651	&			&	\\
+                    pr439		&	384.1		&	t.l.	&	\checkmark	&	1502	&			&	\\
                     pcb442		&				&	t.l.	&	-			&	t.l.	&	\%0.07	&	\\
                     d493		&				&	t.l.	&	-			&	t.l.	&	\%0.02	&	\\
                     p654		&				&	t.l.	&	-			&	t.l.	&	\%0.02	&	\\
@@ -449,8 +451,8 @@
     \begin{itemize}
         \item<1-> Separation heuristics for other families of valid inequalities
         \item<2-> More sophisticated local search heuristics
-        \item<3-> Improve the branching heuristic
-        \item<4-> Analyzing the evolution of the best solution
+        \item<3-> Analyze the branching heuristic
+        \item<4-> Analyze the evolution of the best solution
     \end{itemize}
 \end{frame}
 
@@ -491,8 +493,8 @@
             \item<9-> Set of $n$ \textbf{Jobs} $\cJ$
             \item<10-> Each job has a positive \textbf{processing time} for machines it can run on, $\infty$ for others
             \item<11-> Feasible allocations and processing times provided as $H = (\cM, \, \cJ, \, E)$
-            \item<13-> Processingg times are additive
-            \item<14-> Goal: Minimize the maximum completion time
+            \item<13-> Completion times are additive
+            \item<14-> Goal: Minimize the maximum completion time (\textbf{makespan})
         \end{itemize}
     \end{minipage}
 \end{frame}
@@ -504,7 +506,7 @@
         \item<3-> Easier instance: admits a Polynomial Time Approximation Scheme (PTAS)
         \item<4-> We seek a dichotomy classification: 
             \begin{itemize}
-                \item<5->If $H$ belongs to class $X$ of bipartite graphs $\Rightarrow \, \exists$ PTAS
+                \item<5->If $H$ belongs to \textbf{class} $\mathbf{X}$ of bipartite graphs $\Rightarrow \, \exists$ PTAS
                 \item<6-> Otherwise, there is no PTAS.
             \end{itemize}
         \item<7-> Restricted Santa Claus and Restricted $R \, | \, | \, C_{\max}$:
@@ -524,7 +526,7 @@
 		        \end{itemize}
             \item<4-> Best approximations:
                 \begin{itemize}
-                    \item<5-> Pol\'{a}\v{c}ek and Svensson gave a quasipolynomial $\frac{1}{4}$-approximation algorithm (2012)
+                    \item<5-> Pol\'{a}\v{c}ek and Svensson gave a quasipolynomial $\frac{1}{4}$-\textbf{estimation} algorithm (2012)
                     \item<6-> Annamalai, Kalaitzis, and Svensson provided a polynomial time $\frac{1}{13}$-approximation algorithm (2014)
                 \end{itemize}
             \item<7-> PTAS:
@@ -588,7 +590,7 @@
                 \item<6-> Our solution: Associate a signature vector to graphs such that:
                     \begin{itemize}
                         \item<7-> The number of vectors is polynomial
-                        \item<8-> We can \textbf{retrieve} a remainder graph form each vector that is a \emph{close} approximation of the original one
+                        \item<8-> We can \textbf{retrieve} a feasible allocation with losing a small value in approximation factor
                     \end{itemize}
                 \item<9-> We \alert{propose} signature vectors and \alert{prove} that the retrieval is possible for them in the ordered instances
             \end{itemize}
