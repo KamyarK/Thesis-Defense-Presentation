@@ -497,7 +497,7 @@
     \end{minipage}
 \end{frame}
 
-\begin{frame}[t]{Introduction (3)}
+\begin{frame}[t]{Solution Methods}
     \begin{itemize}
         \item<1-> Goal: to identify ``easier'' instances of both problems
         \item<2-> Chart the computational complexity landscape of the  problem
@@ -507,9 +507,125 @@
                 \item<5->If $H$ belongs to class $X$ of bipartite graphs $\Rightarrow \, \exists$ PTAS
                 \item<6-> Otherwise, there is no PTAS.
             \end{itemize}
+        \item<7-> Restricted Santa Claus and Restricted $R \, | \, | \, C_{\max}$:
+            \begin{itemize}
+                \item<8-> Every item has the same value to all players interested in it
+                \item<9-> Every job has the same processing time on all machine that can run it
+            \end{itemize}
     \end{itemize}
 \end{frame}
 
+\begin{frame}[t]{Related Work (1)}
+	Restricted Max-Min Fair Allocation (Santa Claus):
+	    \begin{itemize}
+	    	\item<2-> Hardness results:
+                \begin{itemize}
+            	    \item<3-> A $\frac{1}{2}$-inapproximability follows from the work of Lenstra, Shmoys, and Tardos (1990)
+		        \end{itemize}
+            \item<4-> Best approximations:
+                \begin{itemize}
+                    \item<5-> Pol\'{a}\v{c}ek and Svensson gave a quasipolynomial $\frac{1}{4}$-approximation algorithm (2012)
+                    \item<6-> Annamalai, Kalaitzis, and Svensson provided a polynomial time $\frac{1}{13}$-approximation algorithm (2014)
+                \end{itemize}
+            \item<7-> PTAS:
+                \begin{itemize}
+                    \item<8-> Alon et al. provided a PTAS for the case where the graph $H$ is a complete bipartite graph (1998)
+                    \item<9-> Jansen improved the running time of the PTAS by Alon et al. (2010)
+                    \item<11-> Muratore et al. (2010) and Schwarz (2010) provide PTASs on instances with \textbf{nested} and \textbf{tree-precedence} intervals respectively.
+                \end{itemize}
+	       \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Related Work (2)}
+	Restricted Min-Max Fair Allocation ($R \, | \, | \, C_{\max}$):
+	    \begin{itemize}
+    	    \item<2-> Hardness results:
+                \begin{itemize}
+        	        \item<3-> A famous $\frac{3}{2}$-inapproximability by Lenstra, Shmoys, and Tardos (1990)
+                \end{itemize}
+            \item<4-> Best approximations:
+                \begin{itemize}
+                    \item<5-> Svensson provided a $\frac{33}{17} + \varepsilon$- estimation algorithm for small values of $\varepsilon$ (2011)
+                \end{itemize}
+            \item<6-> PTAS:
+                \begin{itemize}
+                    \item<7-> The results for the restricted Santa Claus problem hold.
+                \end{itemize}
+        \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Our Contributions}
+\label{ptas_contributions}
+    \begin{itemize}
+        \item<2-> Given: an instance of the restricted Santa Claus  (or $R \, | \, |  \, C_{\max}$) problem as a bipartite graph $H = (I, \, P, \, E)$ (or $H = (\cM, \, \cJ, \, E)$)
+        \item<3-> We provide: 
+            \begin{itemize}
+                \item<4-> \alert{PTAS for the restricted Santa Claus problem}
+                \item<5-> \alert{PTAS for the restricted $R \, | \, |  \, C_{\max}$ problem}
+            \end{itemize}
+        \item<6->[ ] when $H$ is a \textbf{permutation bipartite} graph:
+            \begin{itemize}
+                \item<7-> Neighbourhood of players (machines) are intervals (\textbf{Convex} graphs)
+                \label{convex}
+                \item<8-> There are no proper inclusions among the intervals
+            \end{itemize}
+        \item<9-> Provide a \alert{PTAS for $R \, | \, |  \, C_{\max}$} on \textbf{laminar} families of sets
+        \item<10-> Defined a family of \alert{ordered instances} by extending the laminar families of sets       
+            \begin{itemize}
+                \item<11-> Ordered instances include both permutation bipartite graphs and laminar families of sets
+            \end{itemize}
+        \item<12-> Provide a \alert{PTAS for $R \, | \, |  \, C_{\max}$} on \textbf{ordered instances}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Our Method}
+    \begin{itemize}
+        \item<2-> Dynamic programming and rounding the values 
+        \item<3-> Total order on the set of players (machines)
+        \item<4-> Start considering all ``possible assignments'' in the mentioned total order
+            \begin{itemize}
+                \item<5-> Problem: There are exponentially many \alert{remainder} graphs to consider
+                \item<6-> Our solution: Associate a signature vector to graphs such that:
+                    \begin{itemize}
+                        \item<7-> The number of vectors is polynomial
+                        \item<8-> We can \textbf{retrieve} a remainder graph form each vector that is a \emph{close} approximation of the original one
+                    \end{itemize}
+                \item<9-> We \alert{propose} signature vectors and \alert{prove} that the retrieval is possible for them in the ordered instances
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Future Directions}
+
+	\begin{itemize}
+    	\item<1-> Convex graphs in general 
+    	    \begin{itemize}
+    	        \item<2-> Convex graphs: the neighbourhood of each player (machine) in the set of items (jobs) forms an interval
+    	    \end{itemize}
+        \item<3-> Other graph classes that admit a PTAS
+        	\begin{itemize}
+            	\item<4-> Trivially perfect bigraphs
+                \item<5-> Chordal bigraphs
+                \item<6-> Partial orders (items on trees rather than paths)
+                \item<7-> $\ldots$
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Papers and Presentations}
+    \begin{itemize}
+        \item Vehicle Routing:
+            \begin{itemize}
+                \item B. Chan, E. Iranmanesh, K. K., R. Krishnamurti, A. Rafiey, V. Sokol: \alert{A Column Generation Approach for the Vehicle Routing Problem with Skill Sets}, \emph{CORS 2013}
+                \item K. K., R. Krishnamurti: \alert{Prize Collecting Travelling Salesman Problem - Fast Heuristic Separations}, \emph{ICORES 2016}
+    \end{itemize}
+    \item Scheduling:
+        \begin{itemize}
+            \item K. K., R. Krishnamurti, A. Rafiey, G. Stamoulis: \alert{PTAS for Ordered Instances of Resource Allocation Problems}, \emph{FSTTCS 2013}
+            \item K. K., R. Krishnamurti, A. Rafiey, G. Stamoulis: \alert{PTAS for Ordered Instances of Resource Allocation Problems with Restrictions on Inclusions} \emph{(submitted paper)} 
+        \end{itemize}
+    \end{itemize}
+\end{frame}
 %__________________________________________________________________________________
 \begin{frame}[t,plain]
     \begin{center}
