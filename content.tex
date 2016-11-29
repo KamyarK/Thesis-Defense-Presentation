@@ -5,6 +5,16 @@
 \titlepage
 \end{frame}
 
+
+\begin{frame}{In This Presentation}
+  \tableofcontents
+\end{frame}
+
+%__________________________________________________________________________________
+\section{Indivisible Resource Allocation}
+\frame{\textbf{\insertsection}}
+
+
 \begin{frame}[t]{Resource Allocation}
     \begin{itemize}
         \item<2-> Allocation of scarce resources to \textbf{customers} under some constraints
@@ -44,7 +54,7 @@
         \item<2-> Divisible Resource Allocation
             \begin{itemize}
                 \item<3-> Example: cake cutting problem
-            	\item<4-> The question: \emph{fair division} of divisible resources
+            	\item<4-> The question: \emph{fair division} of the resources
             	\item<5-> Mostly studied in  economics, game theory, and sociology
             \end{itemize}
         \item<6-> Indivisible Resource Allocation (\alert{IRA})
@@ -53,184 +63,6 @@
                 \item<8-> Combinatorial nature of the allocation
                 \item<9-> Mostly studied in operation research, combinatorial optimization, and computer science
             \end{itemize}  
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{In This Presentation}
-  \tableofcontents
-\end{frame}
-
-%__________________________________________________________________________________
-\section{Skill Vehicle Routing Problem}
-\frame{\textbf{\insertsection}}
-
-\begin{frame}[t]{Introduction (1)}
-    \begin{minipage}[t]{0.48\textwidth}
-        \begin{itemize}
-            \item<1-> Set of \textbf{customers} $S$
-            \item<2-> Skill requirement $q_j$,  $\forall j \in S$
-            \item<3-> Fleet of vehicles (\textbf{drivers}) $D$
-            \item<4-> Set of skills $K_i$ $\forall i \in D$
-            \item<5-> Special node \emph{depot}, $r \in S$
-            \item<6-> Metric graph $G = (S, \, E)$
-            \item<7-> Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
-        \end{itemize}
-    \end{minipage}
-    \begin{minipage}[t]{0.48\textwidth}
-        \begin{figure}
-            \centering
-            \includegraphics[width=5cm]{VRPSS01.pdf}
-            \caption{SVRP}
-            \label{fig:VRPSS01}
-        \end{figure}            
-    \end{minipage}
-\end{frame}
-
-\begin{frame}[t]{Introduction (1)}
-    \begin{minipage}[t]{0.48\textwidth}
-        \begin{itemize}
-            \item Set of \textbf{customers} $S$
-            \item Skill requirement $q_j$,  $\forall j \in S$
-            \item Fleet of vehicles (\textbf{drivers}) $D$
-            \item Set of skills $K_i$ $\forall i \in D$
-            \item Metric graph $G = (S, \, E)$
-            \item Special node \emph{depot}, $r \in S$
-            \item Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
-        \end{itemize}
-    \end{minipage}
-    \begin{minipage}[t]{0.48\textwidth}
-        \begin{figure}
-            \centering
-            \includegraphics[width=5cm]{VRPSS02.pdf}
-            \caption{SVRP}
-            \label{fig:VRPSS02}
-        \end{figure}            
-    \end{minipage}    
-\end{frame}
-
-\begin{frame}[t]{Introduction (1)}
-    \begin{minipage}[t]{0.48\textwidth}
-        \begin{itemize}
-            \item Set of \textbf{customers} $S$
-            \item Skill requirement $q_j$,  $\forall j \in S$
-            \item Fleet of vehicles (\textbf{drivers}) $D$
-            \item Set of skills $K_i$ $\forall i \in D$
-            \item Metric graph $G = (S, \, E)$
-            \item Special node \emph{depot}, $r \in S$
-            \item Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
-        \end{itemize}
-    \end{minipage}
-    \begin{minipage}[t]{0.48\textwidth}
-        \begin{figure}
-            \centering
-            \includegraphics[width=5cm]{VRPSS03.pdf}
-            \caption{SVRP}
-            \label{fig:VRPSS02}
-        \end{figure}            
-    \end{minipage}    
-\end{frame}
-
-\begin{frame}{Introduction (2)}
-\begin{itemize}
-    \item<1-> Goal: to find \textbf{tours} (routes that start and end at $r$) and assign them to drivers such that:
-    \begin{itemize}
-        \item<2-> The union of all the tours cover $S$
-        \item<3-> The drivers can served the customers assigned to them
-        \item<4-> The total travel distance is minimized
-    \end{itemize}
-    \item<5-> SVRP has immediate applications in logistics and transportation
-        \begin{itemize}
-            \item<6-> Transport costs account for 10\% of the total cost of a product
-            \item<7-> Manual optimization of the transport cost becomes infeasible as the scale grows
-        \end{itemize}
-    \item<7-> We seek to solve SVRP \textbf{computationally}
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}[t]{Solution Methods}
-    \begin{itemize}
-        \item<1-> Metaheuristics:
-            \begin{itemize}
-                \item<2-> Tabu search
-                \item<3-> Simulated annealing
-                \item<4-> \ldots
-            \end{itemize}
-        \item<5-> Linear Programming:
-            \begin{itemize}
-                \item<6-> Goal: obtain minimum-cost solutions or lower and upper bounds
-                \item<7-> an LP-relaxation used in a branch-and-bound algorithm
-                \item<8-> Integrality gap plays an important role
-                \item<9-> Question: a formulation with small gap?
-                \item<10-> Answer: \textbf{Configuration LP}
-            \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Configuration LP (1)}
-    \begin{itemize}
-        \item<1-> First used in the context of Bin Packing problems
-        \item<2-> For every driver $i \in D$, $\cT(i)$ is the set of tours $i$ can serve        
-        \item<3-> For every driver $i \in D$ and every tour $T \in \cT(i)$:
-        \[
-            z_{i, T} =
-                \begin{cases}
-                    1 & \text{if driver $i$ visits the vertices in the tour $T$} \\
-                    0 & \text{otherwise}
-                \end{cases}
-        \]
-    \end{itemize}
-\end{frame}
-\begin{frame}[t]{Configuration LP (2)}
-    \label{CLP2}
-    \begin{itemize}
-        \item<1->[ ] \begin{align}
-            \text {min } \label{cg_obj}	 \sum_{ i, 	T \in \cT(i) } z_{i, T} & \cdot C(T) &    &  \\
-            \text{subject to }             & & \nonumber  \\
-            \label{const:cg1}       \sum_{ T \in \cT(i) } z_{ i, T } & = 1  &   \forall i \in D \\
-            \label{const:cg2}       \sum_{ i, T \in \cT(i): T \ni j } z_{ i, T } & \geq 1   &   \forall j \in S \\
-            \label{consT:cg3}       z_{ i, T } & \in \{0,\, 1\}    & \forall \, i \in D, \, \forall \, T \in \cT(i) 
-        \end{align}        
-        \hyperlink{our_method_bp}{\beamergotobutton{Branch-and-Price}}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Configuration LP (3)}
-    \begin{itemize}
-        \item<1-> Advantage:
-            \begin{itemize}
-                \item<2-> Small integrality gap
-            \end{itemize}
-        \item<3-> Disadvantage: 
-            \begin{itemize}
-                \item<4-> Exponential number of variables
-            \end{itemize}
-        \item<5-> Common technique for dealing with LP formulations with a large number of constraints: \textbf{Delayed Column Generation}
-            \begin{itemize}
-                \item<6-> Do not introduce all the variables at once
-                \item<7-> Solve LP relaxation on a subset of variables (columns)
-                \item<8-> Detect and introduce columns that can improve the solution: \textbf{reduced-cost columns}
-                \item<9-> Used extensively for Vehicle Routing Problems with Time Windows
-            \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Our Contributions}
-    \label{our_method_bp}
-    \begin{itemize}
-        \item<1-> A \alert{Branch-and-Price} algorithm: 
-        \item<2-> Use column generation in a branch-and-bound framework
-        \item<3-> Detect the reduced-cost columns (\textbf{Pricing} subproblem)
-            \begin{itemize}
-                \item<4-> Heuristic: a \alert{local search} algorithm 
-                \item<5-> Exact solutions: \alert{Prize-Collecting TSP}
-            \end{itemize}
-        \item<6-> Use both the heuristic and exact solutions to improve upper and lower bounds \hyperlink{CLP2}{\beamergotobutton{Config. LP}}        
-        \item<7-> Future projects:
-            \begin{itemize}
-                \item<8-> Benchmarking heuristics and metaheuristics
-                \item<9-> Improving the branch-and-price with heuristics
-            \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -317,18 +149,17 @@
 \begin{frame}[t]{Solution Methods}
     \begin{itemize}
         \item<1-> PCTSP may arise as subproblem in a column generation technique for many vehicle routing problems
-        \item<2-> SVRP is one example
-        \item<3-> We seek:
+        \item<2-> We seek:
             \begin{itemize}
-                \item<4-> Fast heuristics that provide near-optimal solutions
+                \item<3-> Fast heuristics that provide near-optimal solutions
                     \begin{itemize}
-                        \item<5-> These solutions can be used as reduced-cost columns for SVRP
-                        \item<6-> Normally based on local search
+                        \item<4-> These solutions can be used as reduced-cost columns for SVRP
+                        \item<5-> Normally based on local search
                     \end{itemize}
-                \item<7-> Exact solutions that provide bounds for SVRP
+                \item<6-> Exact solutions that provide bounds for SVRP
                     \begin{itemize}
-                        \item<8-> Based on LP formulations with small integrality gap
-                        \item<9-> Used in a branch-and-bound framework
+                        \item<7-> Based on LP formulations with small integrality gap
+                        \item<8-> Used in a branch-and-bound framework
                     \end{itemize}
                     
             \end{itemize}
@@ -394,7 +225,7 @@
         \item<4-> Solution: do not introduce them all at once (cutting plane method)
             \begin{itemize}
                 \item<5-> Start with an initial set of constraints and solve the LP relaxation
-                \item<6-> Identify violated constrains (if any) and add them to the model (\textbf{Separation} problem)
+                \item<6-> Identify violated constraints (if any) and add them to the model (\textbf{Separation} problem)
                 \item<7-> Iterate until completion
             \end{itemize}    
     \end{itemize}
@@ -426,20 +257,20 @@
                     \hline \\
                     \textbf{Instance}	&	\textbf{Obj.}	&	\textbf{ILP Time}	&	\textbf{Optimal}	&	\textbf{Time}	&	\textbf{\% Gap}	& \\
                     \hline \\
-                    att48		&	-1358.75		&	1		&	\checkmark	&	<1		&			&	\\
-                    st70		&	6432.24	&	3		&	\checkmark	&	4		&			&	\\
+                    att48		&	-1358.75	&	1		&	\checkmark	&	<1		&			&	\\
+                    st70		&	6432.24	    &	3		&	\checkmark	&	4		&			&	\\
                     eilD76		&	6774.3		&	2		&	\checkmark	&	8		&			&	\\
-                    gr96		&	9527.97	&	6		&	\checkmark	&	46		&			&	\\
-                    ch150		&	8827.78	&	14226	&	\checkmark	&	1166	&			&	\\
-                    kroB200		&	3151.54	&	t.l.	&	\checkmark	&	270		&			&	\\
-                    a280		&	24878.5	&	t.l.	&	\checkmark	&	3550	&			&	\\
-                    fl417		&				&	t.l.	&	-			&	t.l.	&	\%0.05	&	\\
-                    gr431		&	41742.6	&	5180	&	\checkmark	&	2651	&			&	\\
-                    pr439		&	384.1		&	t.l.	&	\checkmark	&	1502	&			&	\\
-                    pcb442		&				&	t.l.	&	-			&	t.l.	&	\%0.07	&	\\
-                    d493		&				&	t.l.	&	-			&	t.l.	&	\%0.02	&	\\
-                    p654		&				&	t.l.	&	-			&	t.l.	&	\%0.02	&	\\
-                    d657		&				&	t.l.	&	-			&	t.l.	&	\%0.03	&	\\
+                    gr96		&	9527.97	    &	6		&	\checkmark	&	46		&			&	\\
+                    ch150		&	8827.78	    &	14226	&	\checkmark	&	1166	&			&	\\
+                    kroB200		&	3151.54	    &	t.l.	&	\checkmark	&	270		&			&	\\
+                    a280		&	24878.5	    &	t.l.	&	\checkmark	&	3550	&			&	\\
+                    fl417		&   <41424	    &	t.l.	&	-			&	t.l.	&	\%0.05	&	\\
+                    gr431		&	41742.6	    &	5180	&	\checkmark	&	2651	&			&	\\
+                    pr439		&	384.1	    &	t.l.	&	\checkmark	&	1502	&			&	\\
+                    pcb442		&   <43514.9    &	t.l.	&	-			&	t.l.	&	\%0.07	&	\\
+                    d493		&   <48946.8	&	t.l.	&	-			&	t.l.	&	\%0.02	&	\\
+                    p654		&	<65493		&	t.l.	&	-			&	t.l.	&	\%0.02	&	\\
+                    d657		&	<64690.2	&	t.l.	&	-			&	t.l.	&	\%0.03	&	\\
                     \hline
                 \end{tabular} }
             \caption{Computational results for the \textbf{Smart Branch}} \label{tbl:results3}
@@ -447,12 +278,85 @@
     \end{table}
 \end{frame}
 
+\begin{frame}[t]{PCTSP Applications}
+    Skill Vehicle Routing Problem (SVRP):
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{itemize}
+            \item<1-> Set of \textbf{customers} $S$
+            \item<2-> Skill requirement $q_j$,  $\forall j \in S$
+            \item<3-> Fleet of vehicles (\textbf{drivers}) $D$
+            \item<4-> Set of skills $K_i$ $\forall i \in D$
+            \item<5-> Special node \emph{depot}, $r \in S$
+            \item<6-> Metric graph $G = (S, \, E)$
+            \item<7-> Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=5cm]{VRPSS01.pdf}
+            \caption{SVRP}
+            \label{fig:VRPSS01}
+        \end{figure}            
+    \end{minipage}
+\end{frame}
+
+\begin{frame}[t]{PCTSP Applications}
+    Skill Vehicle Routing Problem (SVRP):
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{itemize}
+            \item Set of \textbf{customers} $S$
+            \item Skill requirement $q_j$,  $\forall j \in S$
+            \item Fleet of vehicles (\textbf{drivers}) $D$
+            \item Set of skills $K_i$ $\forall i \in D$
+            \item Special node \emph{depot}, $r \in S$
+            \item Metric graph $G = (S, \, E)$            
+            \item Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=5cm]{VRPSS02.pdf}
+            \caption{SVRP}
+            \label{fig:VRPSS02}
+        \end{figure}            
+    \end{minipage}    
+\end{frame}
+
+\begin{frame}[t]{PCTSP Applications}
+    Skill Vehicle Routing Problem (SVRP):
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{itemize}
+            \item Set of \textbf{customers} $S$
+            \item Skill requirement $q_j$,  $\forall j \in S$
+            \item Fleet of vehicles (\textbf{drivers}) $D$
+            \item Set of skills $K_i$ $\forall i \in D$
+            \item Special node \emph{depot}, $r \in S$
+            \item Metric graph $G = (S, \, E)$            
+            \item Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=5cm]{VRPSS03.pdf}
+            \caption{SVRP}
+            \label{fig:VRPSS02}
+        \end{figure}            
+    \end{minipage}    
+\end{frame}
+
 \begin{frame}[t]{Future Directions}
     \begin{itemize}
-        \item<1-> Separation heuristics for other families of valid inequalities
-        \item<2-> More sophisticated local search heuristics
-        \item<3-> Analyze the branching heuristic
-        \item<4-> Analyze the evolution of the best solution
+        \item<1-> Use the heuristic and the Branch-and-Cut solutions to PCTSP to solve SVRP
+            \begin{itemize}
+                \item<2-> In a \textbf{Branch-and-Price} algorithm
+            \end{itemize}
+        \item<3-> Separation heuristics for other families of valid inequalities
+        \item<4-> More sophisticated local search heuristics
+        \item<5-> Analyze the branching heuristic
+        \item<6-> Analyze the evolution of the best solution
     \end{itemize}
 \end{frame}
 
@@ -580,23 +484,6 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}[t]{Our Method}
-    \begin{itemize}
-        \item<2-> Dynamic programming and rounding the values 
-        \item<3-> Total order on the set of players (machines)
-        \item<4-> Start considering all ``possible assignments'' in the mentioned total order
-            \begin{itemize}
-                \item<5-> Problem: There are exponentially many \alert{remainder} graphs to consider
-                \item<6-> Our solution: Associate a signature vector to graphs such that:
-                    \begin{itemize}
-                        \item<7-> The number of vectors is polynomial
-                        \item<8-> We can \textbf{retrieve} a feasible allocation with losing a small value in approximation factor
-                    \end{itemize}
-                \item<9-> We \alert{propose} signature vectors and \alert{prove} that the retrieval is possible for them in the ordered instances
-            \end{itemize}
-    \end{itemize}
-\end{frame}
-
 \begin{frame}[t]{Future Directions}
 
 	\begin{itemize}
@@ -631,7 +518,69 @@
 %__________________________________________________________________________________
 \begin{frame}[t,plain]
     \begin{center}
-        \vspace{4cm}
-        {\LARGE \textbf{Thank You!}}
+        \vspace{2cm}
+        {\LARGE \textbf{Acknowledgements}}
+      \begin{table}
+            \begin{center}
+                \resizebox{.75\textwidth}{!}
+                {
+                    \begin{tabular}{r l}
+                        External Examiner:  &   Dr. Yash Aneja              \\
+                        Internal Examiner:  &   Dr. Leonid Chindelevitch    \\
+                        Chair:              &   Dr. Faraz Hach              \\
+                                            &                               \\
+                        Senior Supervisor:  &   Dr. Ramesh Krishnamurti     \\
+                        Co-supervisor:      &   Dr. Binay Bhattacharya      \\
+                        Supervisor:         &   Dr. Pavol Hell              \\
+                    \end{tabular}        
+                }
+            \end{center}
+        \end{table}
     \end{center}
+\end{frame}
+
+\begin{frame}[t]{Configuration LP (1)}
+    \begin{itemize}
+        \item<1-> First used in the context of Bin Packing problems
+        \item<2-> For every driver $i \in D$, $\cT(i)$ is the set of tours $i$ can serve        
+        \item<3-> For every driver $i \in D$ and every tour $T \in \cT(i)$:
+        \[
+            z_{i, T} =
+                \begin{cases}
+                    1 & \text{if driver $i$ visits the vertices in the tour $T$} \\
+                    0 & \text{otherwise}
+                \end{cases}
+        \]
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{Configuration LP(2)}
+    \label{CLP2}
+    \begin{itemize}
+        \item<1->[ ] \begin{align}
+            \text {min } \label{cg_obj}	 \sum_{ i, 	T \in \cT(i) } z_{i, T} & \cdot C(T) &    &  \\
+            \text{subject to }             & & \nonumber  \\
+            \label{const:cg1}       \sum_{ T \in \cT(i) } z_{ i, T } & = 1  &   \forall i \in D \\
+            \label{const:cg2}       \sum_{ i, T \in \cT(i): T \ni j } z_{ i, T } & \geq 1   &   \forall j \in S \\
+            \label{consT:cg3}       z_{ i, T } & \in \{0,\, 1\}    & \forall \, i \in D, \, \forall \, T \in \cT(i) 
+        \end{align}        
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{PTAS Main Ideas}
+    \begin{itemize}
+        \item<2-> Dynamic programming and rounding the values 
+        \item<3-> Total order on the set of players (machines)
+        \item<4-> Start considering all ``possible assignments'' in the mentioned total order
+            \begin{itemize}
+                \item<5-> Problem: There are exponentially many \alert{remainder} graphs to consider
+                \item<6-> Our solution: Associate a signature vector to graphs such that:
+                    \begin{itemize}
+                        \item<7-> The number of vectors is polynomial
+                        \item<8-> We can \textbf{retrieve} a feasible allocation with losing a small value in approximation factor
+                    \end{itemize}
+                \item<9-> We \alert{propose} signature vectors and \alert{prove} that the retrieval is possible for them in the ordered instances
+            \end{itemize}
+    \end{itemize}
 \end{frame}
