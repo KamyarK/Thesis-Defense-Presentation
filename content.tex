@@ -538,47 +538,47 @@
     \end{center}
 \end{frame}
 
-\begin{frame}[t]{Configuration LP (1)}
-    \begin{itemize}
-        \item<1-> First used in the context of Bin Packing problems
-        \item<2-> For every driver $i \in D$, $\cT(i)$ is the set of tours $i$ can serve        
-        \item<3-> For every driver $i \in D$ and every tour $T \in \cT(i)$:
-        \[
-            z_{i, T} =
-                \begin{cases}
-                    1 & \text{if driver $i$ visits the vertices in the tour $T$} \\
-                    0 & \text{otherwise}
-                \end{cases}
-        \]
-    \end{itemize}
-\end{frame}
+% \begin{frame}[t]{Configuration LP (1)}
+%     \begin{itemize}
+%         \item<1-> First used in the context of Bin Packing problems
+%         \item<2-> For every driver $i \in D$, $\cT(i)$ is the set of tours $i$ can serve        
+%         \item<3-> For every driver $i \in D$ and every tour $T \in \cT(i)$:
+%         \[
+%             z_{i, T} =
+%                 \begin{cases}
+%                     1 & \text{if driver $i$ visits the vertices in the tour $T$} \\
+%                     0 & \text{otherwise}
+%                 \end{cases}
+%         \]
+%     \end{itemize}
+% \end{frame}
 
-\begin{frame}[t]{Configuration LP(2)}
-    \label{CLP2}
-    \begin{itemize}
-        \item<1->[ ] \begin{align}
-            \text {min } \label{cg_obj}	 \sum_{ i, 	T \in \cT(i) } z_{i, T} & \cdot C(T) &    &  \\
-            \text{subject to }             & & \nonumber  \\
-            \label{const:cg1}       \sum_{ T \in \cT(i) } z_{ i, T } & = 1  &   \forall i \in D \\
-            \label{const:cg2}       \sum_{ i, T \in \cT(i): T \ni j } z_{ i, T } & \geq 1   &   \forall j \in S \\
-            \label{consT:cg3}       z_{ i, T } & \in \{0,\, 1\}    & \forall \, i \in D, \, \forall \, T \in \cT(i) 
-        \end{align}        
-    \end{itemize}
-\end{frame}
+% \begin{frame}[t]{Configuration LP(2)}
+%     \label{CLP2}
+%     \begin{itemize}
+%         \item<1->[ ] \begin{align}
+%             \text {min } \label{cg_obj}	 \sum_{ i, 	T \in \cT(i) } z_{i, T} & \cdot C(T) &    &  \\
+%             \text{subject to }             & & \nonumber  \\
+%             \label{const:cg1}       \sum_{ T \in \cT(i) } z_{ i, T } & = 1  &   \forall i \in D \\
+%             \label{const:cg2}       \sum_{ i, T \in \cT(i): T \ni j } z_{ i, T } & \geq 1   &   \forall j \in S \\
+%             \label{consT:cg3}       z_{ i, T } & \in \{0,\, 1\}    & \forall \, i \in D, \, \forall \, T \in \cT(i) 
+%         \end{align}        
+%     \end{itemize}
+% \end{frame}
 
-\begin{frame}[t]{PTAS Main Ideas}
-    \begin{itemize}
-        \item<2-> Dynamic programming and rounding the values 
-        \item<3-> Total order on the set of players (machines)
-        \item<4-> Start considering all ``possible assignments'' in the mentioned total order
-            \begin{itemize}
-                \item<5-> Problem: There are exponentially many \alert{remainder} graphs to consider
-                \item<6-> Our solution: Associate a signature vector to graphs such that:
-                    \begin{itemize}
-                        \item<7-> The number of vectors is polynomial
-                        \item<8-> We can \textbf{retrieve} a feasible allocation with losing a small value in approximation factor
-                    \end{itemize}
-                \item<9-> We \alert{propose} signature vectors and \alert{prove} that the retrieval is possible for them in the ordered instances
-            \end{itemize}
-    \end{itemize}
-\end{frame}     
+% \begin{frame}[t]{PTAS Main Ideas}
+%     \begin{itemize}
+%         \item<2-> Dynamic programming and rounding the values 
+%         \item<3-> Total order on the set of players (machines)
+%         \item<4-> Start considering all ``possible assignments'' in the mentioned total order
+%             \begin{itemize}
+%                 \item<5-> Problem: There are exponentially many \alert{remainder} graphs to consider
+%                 \item<6-> Our solution: Associate a signature vector to graphs such that:
+%                     \begin{itemize}
+%                         \item<7-> The number of vectors is polynomial
+%                         \item<8-> We can \textbf{retrieve} a feasible allocation with losing a small value in approximation factor
+%                     \end{itemize}
+%                 \item<9-> We \alert{propose} signature vectors and \alert{prove} that the retrieval is possible for them in the ordered instances
+%             \end{itemize}
+%     \end{itemize}
+% \end{frame}     
