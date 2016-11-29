@@ -11,7 +11,7 @@
 \end{frame}
 
 %__________________________________________________________________________________
-\section{Indivisible Resource Allocation}
+\section{Resource Allocation}
 \frame{\textbf{\insertsection}}
 
 
@@ -60,8 +60,7 @@
         \item<6-> Indivisible Resource Allocation (\alert{IRA})
             \begin{itemize}
                 \item<7-> Example: Auctions, Scheduling, Vehicle Routing
-                \item<8-> Combinatorial nature of the allocation
-                \item<9-> Mostly studied in operation research, combinatorial optimization, and computer science
+                \item<8-> Mostly studied in operation research, combinatorial optimization, and computer science
             \end{itemize}  
     \end{itemize}
 \end{frame}
@@ -70,16 +69,85 @@
 \section{Prize Collecting TSP}
 \frame{\textbf{\insertsection}}
 
+\begin{frame}[t]{Background}
+    Skill Vehicle Routing Problem (SVRP):
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{itemize}
+            \item<1-> Set of \textbf{customers} $S$
+            \item<2-> Skill requirement $q_j$,  $\forall j \in S$
+            \item<3-> Fleet of vehicles (\textbf{drivers}) $D$
+            \item<4-> Set of skills $K_i$ $\forall i \in D$
+            \item<5-> Special node \emph{depot}, $r \in S$
+            \item<6-> Metric graph $G = (S, \, E)$
+            \item<7-> Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=5cm]{VRPSS01.pdf}
+            \caption{SVRP}
+            \label{fig:VRPSS01}
+        \end{figure}            
+    \end{minipage}
+\end{frame}
+
+\begin{frame}[t]{Background}
+    Skill Vehicle Routing Problem (SVRP):
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{itemize}
+            \item Set of \textbf{customers} $S$
+            \item Skill requirement $q_j$,  $\forall j \in S$
+            \item Fleet of vehicles (\textbf{drivers}) $D$
+            \item Set of skills $K_i$ $\forall i \in D$
+            \item Special node \emph{depot}, $r \in S$
+            \item Metric graph $G = (S, \, E)$            
+            \item Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=5cm]{VRPSS02.pdf}
+            \caption{SVRP}
+            \label{fig:VRPSS02}
+        \end{figure}            
+    \end{minipage}    
+\end{frame}
+
+\begin{frame}[t]{Background}
+    Skill Vehicle Routing Problem (SVRP):
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{itemize}
+            \item Set of \textbf{customers} $S$
+            \item Skill requirement $q_j$,  $\forall j \in S$
+            \item Fleet of vehicles (\textbf{drivers}) $D$
+            \item Set of skills $K_i$ $\forall i \in D$
+            \item Special node \emph{depot}, $r \in S$
+            \item Metric graph $G = (S, \, E)$            
+            \item Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=5cm]{VRPSS03.pdf}
+            \caption{SVRP}
+            \label{fig:VRPSS02}
+        \end{figure}            
+    \end{minipage}    
+\end{frame}
+
+
 \begin{frame}[t]{Introduction}
 
 \begin{itemize}
-\item<1-> A variant of the Traveling Salesman Problem (TSP)
-\item<2-> Metric graph $G = (S, \, E)$ (on a Euclidean plane) 
-\item<3-> A special node depot, $r \in S$
-\item<4-> A cost function $c:E \rightarrow \bR^+$ for every pair of nodes
-\item<5-> A \textbf{prize} function $\beta:S \rightarrow \bR^+$ for every node
-\item<6-> Objective: Find a tour covering the depot and a \emph{subset} of nodes, maximizing the sum of prizes minus the sum of costs
-
+    \item<1-> A variant of the Traveling Salesman Problem (TSP)
+    \item<2-> Metric graph $G = (S, \, E)$ (on a Euclidean plane) 
+    \item<3-> A special node depot, $r \in S$
+    \item<4-> A cost function $c:E \rightarrow \bR^+$ for every pair of nodes
+    \item<5-> A \textbf{prize} function $\beta:S \rightarrow \bR^+$ for every node
+    \item<6-> Objective: Find a tour covering the depot and a \emph{subset} of nodes, maximizing the sum of prizes minus the sum of costs
 \end{itemize}
 \end{frame}
 
@@ -278,75 +346,6 @@
     \end{table}
 \end{frame}
 
-\begin{frame}[t]{PCTSP Applications}
-    Skill Vehicle Routing Problem (SVRP):
-    \begin{minipage}[t]{0.48\textwidth}
-        \begin{itemize}
-            \item<1-> Set of \textbf{customers} $S$
-            \item<2-> Skill requirement $q_j$,  $\forall j \in S$
-            \item<3-> Fleet of vehicles (\textbf{drivers}) $D$
-            \item<4-> Set of skills $K_i$ $\forall i \in D$
-            \item<5-> Special node \emph{depot}, $r \in S$
-            \item<6-> Metric graph $G = (S, \, E)$
-            \item<7-> Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
-        \end{itemize}
-    \end{minipage}
-    \begin{minipage}[t]{0.48\textwidth}
-        \begin{figure}
-            \centering
-            \includegraphics[width=5cm]{VRPSS01.pdf}
-            \caption{SVRP}
-            \label{fig:VRPSS01}
-        \end{figure}            
-    \end{minipage}
-\end{frame}
-
-\begin{frame}[t]{PCTSP Applications}
-    Skill Vehicle Routing Problem (SVRP):
-    \begin{minipage}[t]{0.48\textwidth}
-        \begin{itemize}
-            \item Set of \textbf{customers} $S$
-            \item Skill requirement $q_j$,  $\forall j \in S$
-            \item Fleet of vehicles (\textbf{drivers}) $D$
-            \item Set of skills $K_i$ $\forall i \in D$
-            \item Special node \emph{depot}, $r \in S$
-            \item Metric graph $G = (S, \, E)$            
-            \item Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
-        \end{itemize}
-    \end{minipage}
-    \begin{minipage}[t]{0.48\textwidth}
-        \begin{figure}
-            \centering
-            \includegraphics[width=5cm]{VRPSS02.pdf}
-            \caption{SVRP}
-            \label{fig:VRPSS02}
-        \end{figure}            
-    \end{minipage}    
-\end{frame}
-
-\begin{frame}[t]{PCTSP Applications}
-    Skill Vehicle Routing Problem (SVRP):
-    \begin{minipage}[t]{0.48\textwidth}
-        \begin{itemize}
-            \item Set of \textbf{customers} $S$
-            \item Skill requirement $q_j$,  $\forall j \in S$
-            \item Fleet of vehicles (\textbf{drivers}) $D$
-            \item Set of skills $K_i$ $\forall i \in D$
-            \item Special node \emph{depot}, $r \in S$
-            \item Metric graph $G = (S, \, E)$            
-            \item Cost function $c:E \rightarrow \bR^+$ for every pair of nodes
-        \end{itemize}
-    \end{minipage}
-    \begin{minipage}[t]{0.48\textwidth}
-        \begin{figure}
-            \centering
-            \includegraphics[width=5cm]{VRPSS03.pdf}
-            \caption{SVRP}
-            \label{fig:VRPSS02}
-        \end{figure}            
-    \end{minipage}    
-\end{frame}
-
 \begin{frame}[t]{Future Directions}
     \begin{itemize}
         \item<1-> Use the heuristic and the Branch-and-Cut solutions to PCTSP to solve SVRP
@@ -397,8 +396,8 @@
             \item<9-> Set of $n$ \textbf{Jobs} $\cJ$
             \item<10-> Each job has a positive \textbf{processing time} for machines it can run on, $\infty$ for others
             \item<11-> Feasible allocations and processing times provided as $H = (\cM, \, \cJ, \, E)$
-            \item<13-> Completion times are additive
-            \item<14-> Goal: Minimize the maximum completion time (\textbf{makespan})
+            \item<12-> Completion times are additive
+            \item<13-> Goal: Minimize the maximum completion time (\textbf{makespan})
         \end{itemize}
     \end{minipage}
 \end{frame}
@@ -437,7 +436,7 @@
                 \begin{itemize}
                     \item<8-> Alon et al. provided a PTAS for the case where the graph $H$ is a complete bipartite graph (1998)
                     \item<9-> Jansen improved the running time of the PTAS by Alon et al. (2010)
-                    \item<11-> Muratore et al. (2010) and Schwarz (2010) provide PTASs on instances with \textbf{nested} and \textbf{tree-precedence} intervals respectively.
+                    \item<10-> Muratore et al. (2010) and Schwarz (2010) provide PTASs on instances with \textbf{nested} and \textbf{tree-precedence} intervals respectively.
                 \end{itemize}
 	       \end{itemize}
 \end{frame}
@@ -554,7 +553,6 @@
     \end{itemize}
 \end{frame}
 
-
 \begin{frame}[t]{Configuration LP(2)}
     \label{CLP2}
     \begin{itemize}
@@ -583,4 +581,4 @@
                 \item<9-> We \alert{propose} signature vectors and \alert{prove} that the retrieval is possible for them in the ordered instances
             \end{itemize}
     \end{itemize}
-\end{frame}
+\end{frame}     
